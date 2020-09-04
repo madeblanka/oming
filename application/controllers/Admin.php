@@ -15,10 +15,23 @@ class Admin extends CI_Controller {
         $this->load->view('login');
     }
  
-    public function dashboard()
+    public function datasiswa()
     {
         $data["siswa"] = $this->Siswa_model->getAll();
         $this->load->view("dashboard", $data);
+    }
+    public function dashboard()
+    {
+        $models = array(
+            'Admin_model' => 'admin',
+           );
+           // Load Multiple Models
+           foreach ($models as $file => $object_name)
+           {
+            $this->load->model($file, $object_name);
+           }
+        $data["admin"] = $this->admin->getAll();
+        $this->load->view("tabeladmin", $data);
     }
     public function edit($nis = null)
     {
@@ -49,9 +62,14 @@ class Admin extends CI_Controller {
     {
         $this->load->view("grafik");
     }
-    public function print()
+    public function pilihprint()
     {
         $data["siswa"] = $this->Siswa_model->getAll();
-        $this->load->view("print", $data);
+        $this->load->view("pilihprint", $data);
+    }
+    public function print()
+    {
+        $data['siswa'] = $this->Siswa_model->getByPrint();
+        $this->load->view('print',$data);
     }
 }

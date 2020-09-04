@@ -20,7 +20,15 @@
             <a href="<?php echo site_url('admin/dashboard') ?>" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Data Admin
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('admin/datasiswa') ?>" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Data Siswa
               </p>
             </a>
           </li>
@@ -33,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('admin/print') ?>" class="nav-link">
+            <a href="<?php echo site_url('admin/pilihprint') ?>" class="nav-link">
             <i class="nav-icon fas fa-print"></i>
               <p>
                 Print Data Siswa

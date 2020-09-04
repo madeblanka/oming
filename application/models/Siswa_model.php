@@ -81,7 +81,16 @@ class Siswa_model extends CI_Model
     public function getByNis($nis)
     {
         return $this->db->get_where($this->_table, ["nis" => $nis])->row();
+    } 
+    
+    public function getByPrint()
+    {
+        $post = $this->input->post();
+        $tanggaldaftar = $post["tanggaldaftar"];
+        $this->db->like("tanggaldaftar",'2020-'.$tanggaldaftar,'after');
+        return $this->db->get('tb_siswa')->result();
     }
+
     public function carigrafik($where)
     {
         // $this->db->select('tanggaldaftar');

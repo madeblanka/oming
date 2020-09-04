@@ -3,8 +3,43 @@
 <?php $this->load->view("_partials/head.php") ?>
 <?php $this->load->view("_partials/navbar.php") ?>
 <?php $this->load->view("_partials/sidebar.php") ?>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-  <!-- Content Wrapper. Contains page content -->
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -21,45 +56,33 @@
     <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+              <table id="myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th>NISN</th>
-                      <th>Nama</th>
-                      <th>Umur</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Agama</th>
-                      <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
-                      <th>Alamat</th>
-                      <th>Kabupaten</th>
-                      <th>Email</th>
-                      <th>Notelp</th>
-                      <th>Asal Sekolah</th>
-                      <th>Prestasi</th>
-                      <th>Peringkat</th>
-                      <th>Jenis Prestasi</th>
-                      <th>Tingkatan Prestasi</th>
-                      <th>NEM</th>
-                      <th>Tanggal Daftar </th>
-                      <th>Persentasi</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th >Nama</th>
+                      <th >Umur</th>
+                      <th >Jenis Kelamin</th>
+                      <th >Agama</th>
+                      <th >Tempat Lahir</th>
+                      <th >Tanggal Lahir</th>
+                      <th >Alamat</th>
+                      <th >Kabupaten</th>
+                      <th >Email</th>
+                      <th >Notelp</th>
+                      <th >Asal Sekolah</th>
+                      <th >Prestasi</th>
+                      <th >Peringkat</th>
+                      <th >Jenis Prestasi</th>
+                      <th >Tingkatan Prestasi</th>
+                      <th >NEM</th>
+                      <th >Tanggal Daftar </th>
+                      <th >Persentasi</th>
+                      <th >Status</th>
+                      <th >Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,6 +118,29 @@
                     <?php endforeach; ?>
                   </tbody>
                 </table>
+                <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
               </div>
               <!-- /.card-body -->
             </div>

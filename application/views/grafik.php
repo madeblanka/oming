@@ -10,10 +10,10 @@
   <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css"></script>
   <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
   <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"></script>
-  
+
   <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
- 
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -34,12 +34,12 @@
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels:  ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November','Desember'],
         datasets: [{
             label: 'Grafik Data Siswa',
-            data: [ 
+            data: [
       <?= $this->Siswa_model->carigrafik('2020-01');?>,
       <?= $this->Siswa_model->carigrafik('2020-02');?>,
       <?= $this->Siswa_model->carigrafik('2020-03');?>,
@@ -88,5 +88,5 @@ var myChart = new Chart(ctx, {
     </section>
   </div>
 
-      
+
 <?php $this->load->view("_partials/footer.php") ?>
